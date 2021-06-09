@@ -3,11 +3,12 @@
         "name" : "Game::Numeric",
         "auth" : "CPAN:HOLYGHOST",
         "api" : "1",
-        "version" : "0.1.1",
+        "version" : "0.1.2",
         "description" : "Numerical Analysis functionality.",
         "authors" : [ "The Holy Ghost" ],
         "license" : "General Public License 3, Artistic-2.0",
         "provides" : {
+            "Game::Numeric::FunctionParser" : "lib/Game/Numeric/FunctionParser.pm6",
             "Game::Numeric::Integral" : "lib/Game/Numeric/Integral.pm6",
             "Game::Numeric::Differential" : "lib/Game/Numeric/Differential.pm6"
         },
@@ -18,5 +19,5 @@
         "tags": [
           "Game", "Numeric"
         ],
-        "source-url" : "http://cpan.metacpan.org/authors/id/H/HO/HOLYGHOST/Perl/Game-Numeric-0.1.1.tar.gz"
+        "source-url" : "http://cpan.metacpan.org/authors/id/H/HO/HOLYGHOST/Perl6/Game-Numeric-0.1.2.tar.gz"
     }

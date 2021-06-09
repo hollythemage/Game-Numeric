@@ -1,10 +1,24 @@
 use v6.c;
 
+use Game::Numeric::FunctionParser;
+
 ### calculation of integrals by numerical (analytical) functions
 
 class Game::Numeric::Integral {
 
-	submethod BUILD() {
+	has $!funcp;
+
+	submethod BUILD(:$str) {
+		$!funcp = Game::Numeric::FunctionParser.new($str);	
 	}
 
+	multi method calculate-composite-trapezoidal-rule($a, $b, $n) {
+		my $sum = 0.0;
+
+		loop (my $k = 0; $k < $n-1; $k++) {
+			$sum += $!funcp.call-function($a + $k/$n*($b-$a));
+		}
+
+		return ($b - $a) / $n *($!funcp.call-function($a)/2 + $sum + $!funcp.call-function($b)/2);
+	}
 }
