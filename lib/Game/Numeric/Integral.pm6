@@ -8,6 +8,7 @@ class Game::Numeric::Integral {
 
 	has $!funcp;
 
+	### $str e..g (t - a)^2 ==> t*t-2*a*t+a*a
 	submethod BUILD(:$str) {
 		$!funcp = Game::Numeric::FunctionParser.new($str);	
 	}
