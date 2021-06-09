@@ -1,0 +1,12 @@
+=begin pod 
+
+=NAME    Game::Numeric 
+=AUTHOR  The Holy Ghost 
+=VERSION 0.1
+
+=head1 Description
+
+Numerical Analysis package e.g. for use with Bayesian analysis/learning.
+Made for games.
+
+=end pod
