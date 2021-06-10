@@ -9,4 +9,17 @@
 Numerical Analysis package e.g. for use with Bayesian analysis/learning.
 Made for games.
 
+=head2 FunctionParser.pm6
+
+Constructs a function in a single variable x e.g. f(x) = (14-x)^2 must be given
+as a parameter in the form "14*14-2*14*x+x*x", call-function returns the value
+of f(x) with x = $value for use in functionals.
+
+=head3 Integral.pm6
+ 
+method calculate-composite-trapezoidal-rule($a, $b, $n) where $a is the lower
+bound and $b is the upper bound of the integral, $n is the number of iterations
+for calculating the integral of f(x). f(x) is given as a string for the 
+function parser in the constructor.
+
 =end pod
