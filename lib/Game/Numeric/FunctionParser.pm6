@@ -28,6 +28,7 @@ class Game::Numeric::FunctionParser {
 		return self.parse-simple(1, $tempvalue, $a, $result, $!function-string);
 	}
 
+	### FIXME grammar and regexes
 	multi method parse-simple($index, $tempvalue, $a, $result, $substring) {
 		my $len = $substring.bytes;
 		my $prevop = '';
@@ -39,7 +40,7 @@ class Game::Numeric::FunctionParser {
 			if ($backwardchar === 'x') {
 				$tempvalue = $a;
 			} elsif ($backwardchar.unival) {  ### alphanumeric
-				my ($idx, $rslt) =  self.scannumber($index-1, $substring);
+				my ($idx, $rslt) =  self.scan-number($index-1, $substring);
 				$index = $idx;
 				$tempvalue = $rslt;
 			}
@@ -53,7 +54,7 @@ class Game::Numeric::FunctionParser {
 					$tempvalue = 0.0;
 					
 				} elsif ($forwardchar.unival != NaN) {
-					my ($idx, $rslt) =  self.scannumber($index-1, $substring);
+					my ($idx, $rslt) =  self.scan-number($index-1, $substring);
 					$index = $idx;
 					$tempvalue *= $rslt;
 						
@@ -76,7 +77,7 @@ class Game::Numeric::FunctionParser {
 					$tempvalue = 0.0;
 					
 				} elsif ($forwardchar.unival != NaN) {
-					my ($idx, $rslt) =  self.scannumber($index-1, $substring);
+					my ($idx, $rslt) =  self.scan-number($index-1, $substring);
 					$index = $idx;
 					$tempvalue *= $rslt;
 						
@@ -97,7 +98,7 @@ class Game::Numeric::FunctionParser {
 	}
 
 	### helper function
-	multi method scannumber($index, $substring) {
+	multi method scan-number($index, $substring) {
 		my $t = 0;
 		my $result = 0.0;
 		while ($substring.substr($index, $index+1).unival != NaN) {

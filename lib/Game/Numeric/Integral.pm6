@@ -3,6 +3,7 @@ use v6.c;
 use Game::Numeric::FunctionParser;
 
 ### calculation of integrals by numerical (analytical) functions
+### e.g. trapezoidal rule
 
 class Game::Numeric::Integral {
 
