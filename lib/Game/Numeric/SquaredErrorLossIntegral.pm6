@@ -9,19 +9,27 @@ class Game::Numeric::SquaredErrorLossIntegral {
 	submethod BUILD() {
 	}
 
-	### API method :
+	### main API method :
 	method calculate-integral($a, $b, $theta) { ### a lower bound, b upper bound
-		return self.integral($theta, $b) - self.integral($theta, $a);
+		return self.integral-in-a($theta, $b) - self.integral($theta, $a);
 	}
 
-	method integral($theta, $a) {
+	### API method :
+	method calculate-integral-in-theta($theta1, $theta2, $a) { ### a lower bound, b upper bound
+		return self.integral-in-theta($theta2, $a) - self.integral($theta1, $a);
+	}
+
+	method integral-in-a($theta, $a) {
 
 		return self.square($theta) * $a -  
 			$theta * self.square($a) + self.cubic($a)/3;	
 
 	}
 
-	
+	method integral-in-theta($theta, $a) {
+		return self.cubic($theta) / 3 - 
+			$a * self.square($theta) + self.square($a) * $theta;
+	}
 
 	method square($t) {
 		return Math::pow($t,2);
