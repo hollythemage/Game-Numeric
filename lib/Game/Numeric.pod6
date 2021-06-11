@@ -22,4 +22,10 @@ bound and $b is the upper bound of the integral, $n is the number of iterations
 for calculating the integral of f(x). f(x) is given as a string for the 
 function parser in the constructor.
 
+=head4 SquaredErrorLossIntegral.pm6
+
+calculate-integral($a, $b, $theta) : calculates the integral of the squared
+error loss function, $b is the upper bound, $a is the lower bound and theta
+is of the squared error loss function (theta - a)^2.
+
 =end pod
