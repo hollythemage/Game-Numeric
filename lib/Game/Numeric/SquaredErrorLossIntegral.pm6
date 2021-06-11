@@ -15,10 +15,10 @@ class Game::Numeric::SquaredErrorLossIntegral {
 	}
 
 	### API method :
-	### set $condp = 1 for common integral
+	### set $condpX = 1 for common integral
 	### $condp is used for predictive problems
-	method calculate-integral-in-theta($theta1, $theta2, $condp, $a) { ### a lower bound, b upper bound
-		return self.integral-in-theta($theta2, $condp, $a) - self.integral($theta1, $condp, $a);
+	method calculate-integral-in-theta($theta1, $theta2, $condp1, $condp2,  $a) { ### a lower bound, b upper bound
+		return self.integral-in-theta($theta2, $condp2, $a) - self.integral-in-theta($theta1, $condp1, $a);
 	}
 
 	method integral-in-a($theta, $a) {
