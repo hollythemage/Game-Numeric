@@ -15,8 +15,10 @@ class Game::Numeric::SquaredErrorLossIntegral {
 	}
 
 	### API method :
-	method calculate-integral-in-theta($theta1, $theta2, $a) { ### a lower bound, b upper bound
-		return self.integral-in-theta($theta2, $a) - self.integral($theta1, $a);
+	### set $condp = 1 for common integral
+	### $condp is used for predictive problems
+	method calculate-integral-in-theta($theta1, $theta2, $condp, $a) { ### a lower bound, b upper bound
+		return self.integral-in-theta($theta2, $condp, $a) - self.integral($theta1, $condp, $a);
 	}
 
 	method integral-in-a($theta, $a) {
@@ -26,9 +28,9 @@ class Game::Numeric::SquaredErrorLossIntegral {
 
 	}
 
-	method integral-in-theta($theta, $a) {
-		return self.cubic($theta) / 3 - 
-			$a * self.square($theta) + self.square($a) * $theta;
+	method integral-in-theta($theta, $condp, $a) {
+		return $condp * (self.cubic($theta) / 3 - 
+			$a * self.square($theta) + self.square($a) * $theta);
 	}
 
 	method square($t) {
