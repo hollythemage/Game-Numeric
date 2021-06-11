@@ -10,12 +10,18 @@ class Game::Numeric::SquaredErrorLossIntegral {
 	}
 
 	### API method :
+	method calculate-integral($a, $b, $theta) { ### a lower bound, b upper bound
+		return self.integral($theta, $b) - self.integral($theta, $a);
+	}
+
 	method integral($theta, $a) {
 
 		return self.square($theta) * $a -  
 			$theta * self.square($a) + self.cubic($a)/3;	
 
 	}
+
+	
 
 	method square($t) {
 		return Math::pow($t,2);
